@@ -1,0 +1,101 @@
+<head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <main>
+    <form class="login-form" id="login-form">
+        <label>
+          <input type="radio" name="feeling" value="mild">
+          <img src="assets/feelings/mild.png" alt="Very mild">
+          Very mild
+        </label>
+        <br>
+        <label>
+          <input type="radio" name="feeling" value="tolerable">
+          <img src="assets/feelings/tolerable.png" alt="Tolerable">
+          Tolerable
+        </label>
+        <br>
+        <label>
+          <input type="radio" name="feeling" value="intense">
+          <img src="assets/feelings/intense.png" alt="Intense">
+          Intense
+        </label>
+      <br>
+      <label>
+        <input type="radio" name="feeling" value="excruciating">
+        <img src="assets/feelings/excruciating.png" alt="Excruciating">
+        Excruciating
+      </label>
+    
+      <button type="submit">Enter</button>
+    </form>
+
+    <script>
+      var img = document.createElement("img");
+      img.src = localStorage.getItem('avatarImage')
+      document.body.appendChild(img);
+    </script>
+  </main>
+
+  <style>
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      height: 90%;
+    }
+
+    .login-form label {
+      margin-bottom: 32px;
+    }
+
+    .login-form input {
+      border: none;
+      outline: none;
+
+      /* Wonky borders */
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      border-bottom-right-radius: 225px 15px;
+      border-bottom-left-radius:15px 255px;
+
+      border:solid 3px #41403E;
+    }
+
+    input:hover {
+      box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+    }
+  </style>
+
+  <script>
+    const formEl = document.getElementById('login-form');
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      document.querySelector('button')?.classList.add('loading')
+
+      const formData = new FormData(formEl); // Get form data
+
+      const feeling = formData.get('feeling');
+  
+      localStorage.setItem('feeling', feeling);
+
+      console.log("set feeling")
+
+      location = '7-end.html'
+    });
+  </script>
+
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="dragging.js"></script>
+</body>

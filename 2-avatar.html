@@ -56,9 +56,6 @@
   // const stageTopGap = stageEl.clientTop;
   // const stageLeftGap = stageEl.clientLeft;
 
-  const stageTopGap = window.pageYOffset + stageEl.getBoundingClientRect().top
-  const stageLeftGap = window.pageXOffset + stageEl.getBoundingClientRect().left
-
   stageButtonEl.addEventListener('click', async event => {
     console.log('aadding to canvas and screenshotting', window.inDropzone);
 
@@ -66,7 +63,7 @@
 
     const offscreen = new OffscreenCanvas(300, 600);
 
-    drawImagesToCanvas(offscreen, imgs, stageTopGap, stageLeftGap)
+    drawImagesToCanvas(offscreen, imgs)
 
     // step 2: get the data URL of the Canvas and save it to localStorage and print it out
     offscreen.convertToBlob().then(blob => {
@@ -82,8 +79,13 @@
     })
 })
 
-function drawImagesToCanvas(canvas, images, stageTopGap, stageLeftGap) {
+function drawImagesToCanvas(canvas, images) {
   const ctx = canvas.getContext('2d');
+
+  const stageEl = document.getElementById('stage')
+
+  const stageTopGap = window.pageYOffset + stageEl.getBoundingClientRect().top
+  const stageLeftGap = window.pageXOffset + stageEl.getBoundingClientRect().left
 
   images.forEach(image => {
     // step 1: layout the images on canvas  

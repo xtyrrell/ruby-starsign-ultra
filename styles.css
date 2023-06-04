@@ -20,6 +20,7 @@ canvas {
   margin-bottom: 12px;
 }
 
-.draggable.drop-activated {
+/* TODO: Add a sound confirmation that you've entered an image into the dropzone */
+/* .draggable.drop-activated {
   background: pink;
-}
+} */

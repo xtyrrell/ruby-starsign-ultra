@@ -1,0 +1,15 @@
+end!
+
+<script>
+  document.writeln(localStorage.getItem('login'))
+  document.writeln(localStorage.getItem('avatarImage'))
+  document.writeln(localStorage.getItem('feeling'))
+</script>
+
+<br>
+
+<script>
+  var img = document.createElement("img");
+  img.src = localStorage.getItem('avatarImage')
+  document.body.appendChild(img);
+</script>
