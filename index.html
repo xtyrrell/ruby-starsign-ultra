@@ -1,0 +1,80 @@
+<style>
+* {
+  font-size: 16px;
+  /* font-family: 'Editorial New', serif; */
+}
+
+table, td {
+  border: 2px solid;
+  border-collapse: collapse;
+  padding: 6px;
+}
+
+td img {
+  width: 100px;
+  height: 100px;
+}
+</style>
+
+<script src="https://luis.leiva.name/jsketch/js/dist/sketchable.full.min.js"></script>
+
+
+<body>
+<table>
+  <thead>
+    <td>Index</td>
+    <td>Image</td>
+    <!-- <td>Label</td> -->
+    <td>Selection</td>
+  </thead>
+  <tbody>
+      <tr>
+        <td>0</td>
+        <td><img src="rb/0.jpg" /></td>
+        <!-- <td>May be an image of an illustration of house, forest</td> -->
+        <td>
+          <canvas class="sketchable" width="100" height="100"></canvas>
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><img src="rb/1.jpg" /></td>
+        <!-- <td>May be an image of model, 2000s, selfie</td> -->
+        <td>
+          <canvas class="sketchable" width="100" height="100"></canvas>
+
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><img src="rb/2.jpg" /></td>
+        <!-- <td>May be an image of selfie</td> -->
+        <td>
+          <canvas class="sketchable" width="100" height="100"></canvas>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><img src="rb/3.jpg" /></td>
+        <!-- <td>May be an image of arts and crafts, hearts</td> -->
+        <td>
+          <canvas class="sketchable" width="100" height="100"></canvas>
+        </td>
+      </tr>
+    </tbody>
+</table>
+</body>
+
+<script>
+  (function() {
+    var sketchableElements = document.querySelectorAll('.sketchable');
+    console.log('Sketchable elements: ', sketchableElements);
+  
+    for (var i = 0; i < sketchableElements.length; i++) {
+      var sketchableElement = sketchableElements[i];
+      var sketcher = new Sketchable(sketchableElement);
+    }
+  
+    console.log('Sketchable elements: ', sketchableElements);
+  })();
+  </script>

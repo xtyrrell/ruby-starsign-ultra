@@ -1,0 +1,76 @@
+<head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <main>
+    <form class="login-form" id="login-form">
+      <label>Username: <input type="text" name="username" /></label>
+      <label>Password: <input type="password" name="password" /></label>
+      <button type="submit">Enter</button>
+    </form>
+  </main>
+
+  <style>
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      height: 90%;
+    }
+
+    .login-form label {
+      margin-bottom: 32px;
+    }
+
+    .login-form input {
+      border: none;
+      outline: none;
+
+      /* Wonky borders */
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      border-bottom-right-radius: 225px 15px;
+      border-bottom-left-radius:15px 255px;
+
+      border:solid 3px #41403E;
+    }
+
+    input:hover {
+      box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+    }
+  </style>
+
+  <script>
+    const formEl = document.getElementById('login-form');
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      document.querySelector('button')?.classList.add('loading')
+
+      const formData = new FormData(formEl); // Get form data
+
+      const username = formData.get('username');
+      const password = formData.get('password');
+  
+      localStorage.setItem('login', JSON.stringify({
+        username, password
+      }))
+
+      console.log("set login details")
+
+      location = '2-avatar.html'
+    });
+  </script>
+
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="dragging.js"></script>
+</body>
