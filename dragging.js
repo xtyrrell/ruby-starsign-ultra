@@ -34,19 +34,25 @@ interact(DRAGGABLE_SELECTOR).draggable({
       // event.target.animate(...wiggle);
       
       // Approach 1: using left: and right: css rules
-      const previousLeft = parseFloat(event.target.style.transform || 0);
+      const previousLeft = parseFloat(event.target.style.left || 0);
       const previousTop = parseFloat(event.target.style.top || 0);
       event.target.style.left = `${event.dx + previousLeft}px`;
       event.target.style.top = `${event.dy + previousTop}px`;
 
       // Approach 2: using transform: transform() css rule
-      // const previousTransform = event.target.style.transform;
-      // const [previousX, previousY] = /\d+/.exec(previousTransform) ?? [0, 0];
-      // const x = previousX + event.dx;
-      // const y = previousY + event.dy;
+      // const previousTransform = event.target.style.transform || 'translate(0px, 0px)';
+      // console.log('previousTransform', previousTransform)
+      // console.log('/[0-9.]+/.exec(previousTransform)');
+      // console.log(/[0-9.]+/.exec(previousTransform))
+      // const [previousX = 0, previousY = 0] = previousTransform.match(/[0-9.]+/);
+      // console.log('previousX, previousY', previousX, previousY)
+      // const x = Number(previousX) + event.dx;
+      // const y = Number(previousY) + event.dy;
       // event.target.style.transform = `translate(${x}px, ${y}px)`;
-        
+      
+
       event.target.style.zIndex = ++zIndex;
+      event.target.style.position = 'relative';
     }
   },
 });
