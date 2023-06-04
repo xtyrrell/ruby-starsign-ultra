@@ -1,8 +1,7 @@
 // Library functions and constants
 // ===============================
-const DRAGGABLE_CLASS = "draggable";
-const DRAGGABLE_SELECTOR = `.${DRAGGABLE_CLASS}`;
-const EVERYTHING_IS_DRAGGABLE = false;
+const DRAGGABLE_SELECTOR = `.draggable`;
+const DROPZONE_SELECTOR = '.dropzone';
 
 const shuffled = (arr) =>
   arr
@@ -56,3 +55,35 @@ interact(DRAGGABLE_SELECTOR).draggable({
     }
   },
 });
+
+const inDropzone = {};
+window.inDropzone = inDropzone;
+
+interact(DROPZONE_SELECTOR)
+  .dropzone({
+    ondrop: (event) => {     
+      // event.relatedTarget.classList.add('drop-activated')
+      console.log('dropzone e', event)
+    },
+    ondragenter: function (event) {
+      var draggableElement = event.relatedTarget
+      draggableElement.classList.add('drop-activated')
+
+      const id = draggableElement.getAttribute('data-drop-id') || String(Math.random() * 1000);
+      draggableElement.setAttribute('data-drop-id', id);
+
+      inDropzone[id] = draggableElement;
+      console.log('in dropZone is now', inDropzone)
+    },
+    ondragleave: function (event) {
+      var draggableElement = event.relatedTarget
+      draggableElement.classList.remove('drop-activated')
+
+      const id = draggableElement.getAttribute('data-drop-id');
+      delete inDropzone[id];
+
+      console.log('in dropZone is now', inDropzone)
+    },  
+  })
+
+
