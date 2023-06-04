@@ -87,6 +87,14 @@ function drawImagesToCanvas(canvas, images) {
   const stageTopGap = window.pageYOffset + stageEl.getBoundingClientRect().top
   const stageLeftGap = window.pageXOffset + stageEl.getBoundingClientRect().left
 
+  // TODO: Fix sort
+  const sortedImages = images.sort((a, b) => {
+    const aZ = a.style.zIndex || 0;
+    const bZ = b.style.zIndex || 0;
+
+    return a - b;
+  })
+
   images.forEach(image => {
     // step 1: layout the images on canvas  
     const imgTopGap = window.pageYOffset + image.getBoundingClientRect().top;
