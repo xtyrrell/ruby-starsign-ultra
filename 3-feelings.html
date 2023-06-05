@@ -9,7 +9,7 @@
 
 <body>
   <main>
-    <form class="login-form" id="login-form">
+    <form class="my-form" id="my-form">
         <label>
           <input type="radio" name="feeling" value="mild">
           <img src="assets/feelings/mild.png" alt="Very mild">
@@ -45,7 +45,7 @@
   </main>
 
   <style>
-    .login-form {
+    .my-form {
       display: flex;
       flex-direction: column;
       max-width: 600px;
@@ -55,11 +55,11 @@
       height: 90%;
     }
 
-    .login-form label {
+    .my-form label {
       margin-bottom: 32px;
     }
 
-    .login-form input {
+    .my-form input {
       border: none;
       outline: none;
 
@@ -78,7 +78,7 @@
   </style>
 
   <script>
-    const formEl = document.getElementById('login-form');
+    const formEl = document.getElementById('my-form');
     formEl.addEventListener('submit', (event) => {
       event.preventDefault();
 
@@ -88,11 +88,15 @@
 
       const feeling = formData.get('feeling');
   
-      localStorage.setItem('feeling', feeling);
+      localStorage.setItem('feeling', JSON.stringify({
+        text: feeling,
+        label: "feeling",
+        datetime: Date.now()
+      }))
 
       console.log("set feeling")
 
-      location = '7-end.html'
+      window.location = '4-map.html'
     });
   </script>
 

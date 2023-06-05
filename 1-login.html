@@ -62,12 +62,14 @@
       const password = formData.get('password');
   
       localStorage.setItem('login', JSON.stringify({
-        username, password
+        text: username + '\n' + password,
+        label: "login",
+        datetime: Date.now()
       }))
 
       console.log("set login details")
 
-      location = '2-avatar.html'
+      window.location = '2-avatar.html'
     });
   </script>
 

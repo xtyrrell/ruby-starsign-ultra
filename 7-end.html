@@ -2,14 +2,28 @@ end!
 
 <script>
   document.writeln(localStorage.getItem('login'))
-  document.writeln(localStorage.getItem('avatarImage'))
+  document.writeln(localStorage.getItem('avatar'))
   document.writeln(localStorage.getItem('feeling'))
+  document.writeln(localStorage.getItem('location'))
 </script>
 
 <br>
 
+<pre>
 <script>
   var img = document.createElement("img");
-  img.src = localStorage.getItem('avatarImage')
+  img.src = JSON.parse(localStorage.getItem('avatar')).imageUrl
   document.body.appendChild(img);
+
+  const items = [
+    JSON.parse(localStorage.getItem('login')),
+    JSON.parse(localStorage.getItem('avatar')),
+    JSON.parse(localStorage.getItem('feeling')),
+    JSON.parse(localStorage.getItem('location')),
+  ]
+
+  const itemsStringified = JSON.stringify(items);
+
+  document.writeln(itemsStringified);
 </script>
+</pre>

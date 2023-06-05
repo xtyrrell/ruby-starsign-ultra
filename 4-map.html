@@ -1,0 +1,158 @@
+<head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <main>
+    <form class="my-form" id="my-form">
+      <img class="map" src="assets/map.png" width="70%" />
+        <label id="a1">
+          <input type="radio" name="location" value="Everything you are is what I love">
+          Everything you are is what I love
+        </label>
+        <br>
+        <label id="a2">
+          <input type="radio" name="location" value="I just cried kneeling at the toilet">
+          I just cried kneeling at the toilet
+        </label>
+        <br>
+        <label id="a3">
+          <input type="radio" name="location" value="im on my way to see you. i will come but will be late">
+          im on my way to see you<br>i will come but will be late
+        </label>
+      <br>
+      <label id="a4">
+        <input type="radio" name="location" value="⊥Ͻ∩ ߈Ɛ-0ᘔ⇂">
+        ⊥Ͻ∩ ߈Ɛ-0ᘔ⇂
+      </label>
+
+
+      <label id="a5">
+        <input type="radio" name="location" value="Do you wanna come to Archival Tasks with Python part 1: Spreadsheets on Tuesday eve?">
+        Do you wanna come to "Archival Tasks with Python part 1: Spreadsheets" on Tuesday eve?
+      </label>
+
+      <label id="a6">
+        <input type="radio" name="location" value="I hated this yesterday and I love this now">
+        I hated this yesterday and I love this now
+      </label>
+
+      <label id="a7">
+        <input type="radio" name="location" value="We weren't that compatible in the beginning">
+        We weren't that compatible in the beginning
+      </label>
+
+    
+      <button type="submit">Enter</button>
+    </form>
+  </main>
+
+  <style>
+    .map {
+      margin: auto;
+    }
+
+    .my-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      height: 90%;
+
+      position: relative;
+    }
+
+    .my-form label {
+      position: absolute;
+      background: white;
+      padding: 4px;
+      border: 2px solid black;
+      max-width: 150px;
+    }
+
+    #a1 {
+      left: 19px;
+      top: 151px;
+    }
+
+    #a2 {
+      right: 209px;
+      top: 181px;
+    }
+
+    #a3 {
+      left: 49px;
+      top: 241px;
+    }
+
+    #a4 {
+      left: 140px;
+      bottom: 360px;
+    }
+
+    #a5 {
+      right: 70px;
+      bottom: 370px;
+    }
+
+    #a6 {
+      left: 200px;
+      bottom: 243px;
+    }
+
+    #a7 {
+      bottom: 219px;
+      right: 0px;
+    }
+
+    .my-form input {
+      border: none;
+      outline: none;
+
+      /* Wonky borders */
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      border-bottom-right-radius: 225px 15px;
+      border-bottom-left-radius:15px 255px;
+
+      border:solid 3px #41403E;
+    }
+
+    input:hover {
+      box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+    }
+  </style>
+
+  <script>
+    const formEl = document.getElementById('my-form');
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      document.querySelector('button')?.classList.add('loading')
+
+      const formData = new FormData(formEl); // Get form data
+
+      const location = formData.get('location');
+  
+      localStorage.setItem('location', JSON.stringify({
+        text: location,
+        label: "location",
+        datetime: Date.now()
+      }))
+
+      console.log("set location")
+
+      window.location = '7-end.html'
+    });
+  </script>
+
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="dragging.js"></script>
+</body>
