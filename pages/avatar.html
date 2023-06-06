@@ -65,6 +65,11 @@
 
     const imgs = Object.values(window.inDropzone);
 
+    if (imgs.length == 0) {
+      alert('Oops! Please create an avatar by picking some clothes you like and dragging them onto the dressing area.')
+      return;
+    }
+
     // const offscreen = new OffscreenCanvas(300, 600);
 
     const tempCanvas = document.createElement("canvas");

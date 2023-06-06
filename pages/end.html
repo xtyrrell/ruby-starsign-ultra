@@ -3,13 +3,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<div>
-<p class="loading">
-  Printing...
-  <img class="loading-spinner" src="/assets/spiral.png" width="50" height="50" />
-</p>
-
-<a href="/pages/login.html">Back to start</a>
+  <main>
+      <p class="loading">
+        Printing...
+        <img class="loading-spinner" src="/assets/spiral.png" width="50" height="50" />
+      </p>
+      <!-- <p class="rolling">
+        [{"label":"login","datetime":1686080399415},{"imageUrl":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAJYCAYAAADYJts/AAAgAElEQVR4nOzdeZQkd3Xge43tN4A8fjPHu9mMsccYg0BCCGQDNscYbzOMbTwyIARIGAm0tIT2rSWVWmur933ft+rqpaqruvbKfd/3iIyIjIzIfauq3gDPA9Tf90dkZlfL8+bM87Onmcfvc06c6qqu09VdFXn7/u7v//fCZ3+3bJt/2+bp9b9xrX++wiC8FPstuuu+9mJjcve5t0w8N70qc1/FJvcdqcZHl5Ripw5ITuPJxuJ6XpddnyvY4YuKcFT84nRbd7UyU0PTa196ncGrrvuZ671318QhP89/ZuB6677maGB2/6td+UTvxDdMfDLgWOvva/pOvhb+uy+GwquE39YmNj3NyXbsbsb0alHVeeRrWZ45HAledateU4lG8mphUp88sdyYJiaZKcQHKWWnqOVnaOWm2Fe81LLzaIFTqAFT6O6h9ry7JFTuvPEfdGhTTeMDdxz/XXXXfdvrvU3QRCEnzDelf/lFxI7v3tj6uiLX8id3vhNeWTz8/mJfXt0x+Axw3/CVo6eUQv+oVotdfZSMz31fT08+"}]
+      </p> -->
+      <small><a style="padding-top: 38px;" href="/pages/login.html">Back to start</a></small>
+      <!-- <button id="done" style="padding-top: 38px;">Done :)</button> -->
 
 <style>
   .loading {
@@ -23,7 +26,7 @@
 
 <br>
 
-<pre class="rolling" style="max-width: 100%; overflow: hidden;">
+<pre class="rolling" style="display: none; max-width: 100%; overflow: hidden;">
 <script>
   const items = [
     JSON.parse(localStorage.getItem('login')),
@@ -38,14 +41,13 @@
 
   const itemsStringified = JSON.stringify(items);
 
-  document.writeln(itemsStringified.slice(0, 2000));
-
-  navigator.clipboard.writeText(itemsStringified);
+  document.addEventListener('click', (e) => navigator.clipboard.writeText(itemsStringified));
 
   download("mydata-" + (Date.now()) + ".json", itemsStringified);
 
   function download(filename, text) {
     var element = document.createElement("a");
+    element.textContent = 'Download stuff'
     element.setAttribute(
       "href",
       "data:text/plain;charset=utf-8," + encodeURIComponent(text)
@@ -60,7 +62,18 @@
     document.body.removeChild(element);
   }
 
+
+
+
+  document.getElementById('done').addEventListener('click', () => {
+    console.log("downloading!")
+    download("mydata-" + (Date.now()) + ".json", itemsStringified);
+  })
 </script>
 </pre>
+
+</div>
+
+</main>
 
 </div>
