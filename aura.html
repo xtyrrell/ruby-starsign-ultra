@@ -50,14 +50,22 @@
       document.querySelector("button")?.classList.add("loading");
 
       const canvas = document.getElementById('aura-canvas')
-      canvas.
 
-      const auraImageUrl = canvas.toDataURL("image/png");
+      // resize start
+      const RESIZE_FACTOR = 0.65
+      const resizedCanvas = document.createElement("canvas");
+      const resizedContext = resizedCanvas.getContext("2d");
+      resizedCanvas.height = canvas.height * RESIZE_FACTOR;
+      resizedCanvas.width = canvas.width * RESIZE_FACTOR;
+      resizedContext.drawImage(canvas, 0, 0, resizedCanvas.height, resizedCanvas.width);
+      const resizedAuraImageUrl = resizedCanvas.toDataURL();
+      // resize end
+      // const auraImageUrl = canvas.toDataURL("image/png");
 
       localStorage.setItem(
         "aura",
         JSON.stringify({
-          imageUrl: auraImageUrl,
+          imageUrl: resizedAuraImageUrl,
           label: "aura",
           datetime: Date.now(),
         })
