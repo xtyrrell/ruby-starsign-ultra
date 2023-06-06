@@ -17,12 +17,6 @@
     </form>
 
     <p class="prompt">What's your aura?</p>
-
-    <!-- <script>
-      var img = document.createElement("img");
-      img.src = localStorage.getItem('avatarImage')
-      document.body.appendChild(img);
-    </script> -->
   </main>
 
   <style>
@@ -34,31 +28,6 @@
       align-items: center;
       margin: auto;
       margin-top: 32px;
-    }
-
-    .my-form label {
-      margin-bottom: 32px;
-    }
-
-    .my-form input {
-      border: none;
-      outline: none;
-
-      /* Wonky borders */
-      border-top-left-radius: 255px 15px;
-      border-top-right-radius: 15px 225px;
-      border-bottom-right-radius: 225px 15px;
-      border-bottom-left-radius: 15px 255px;
-
-      border: solid 3px #41403e;
-    }
-
-    .labels {
-      margin: 50px;
-    }
-
-    input:hover {
-      box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
     }
   </style>
 
@@ -81,6 +50,7 @@
       document.querySelector("button")?.classList.add("loading");
 
       const canvas = document.getElementById('aura-canvas')
+      canvas.
 
       const auraImageUrl = canvas.toDataURL("image/png");
 
@@ -93,31 +63,9 @@
         })
       );
 
-      console.log("set aura", localStorage.getItem("confession"));
+      console.log("set aura", localStorage.getItem("aura"));
 
       window.location = "7-end.html";
     });
-
-    // function getDataUrl(img) {
-    //   // Create an empty canvas element
-    //   var canvas = document.createElement("canvas");
-    //   canvas.width = img.width;
-    //   canvas.height = img.height;
-
-    //   // Copy the image contents to the canvas
-    //   var ctx = canvas.getContext("2d");
-    //   ctx.drawImage(img, 0, 0);
-
-    //   // Get the data-URL formatted image
-    //   // Firefox supports PNG and JPEG. You could check img.src to
-    //   // guess the original format, but be aware the using "image/jpg"
-    //   // will re-encode the image.
-    //   var dataURL = canvas.toDataURL("image/png");
-
-    //   return dataURL;
-    // }
   </script>
-
-  <script src="scripts/vendor/interact.min.js"></script>
-  <script src="dragging.js"></script>
 </body>
