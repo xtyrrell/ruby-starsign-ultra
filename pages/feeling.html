@@ -12,25 +12,25 @@
     <form class="my-form" id="my-form">
         <label>
           <input type="radio" name="feeling" value="mild">
-          <img src="assets/feelings/mild.png" id="mild">
+          <img src="/assets/feelings/mild.png" id="mild">
           Very mild
         </label>
         <br>
         <label>
           <input type="radio" name="feeling" value="tolerable">
-          <img src="assets/feelings/tolerable.png" id="tolerable">
+          <img src="/assets/feelings/tolerable.png" id="tolerable">
           Tolerable
         </label>
         <br>
         <label>
           <input type="radio" name="feeling" value="intense">
-          <img src="assets/feelings/intense.png" id="intense">
+          <img src="/assets/feelings/intense.png" id="intense">
           Intense
         </label>
       <br>
       <label>
         <input type="radio" name="feeling" value="excruciating">
-        <img src="assets/feelings/excruciating.png" id="excruciating">
+        <img src="/assets/feelings/excruciating.png" id="excruciating">
         Excruciating
       </label>
     
@@ -102,7 +102,7 @@
 
       console.log("set feeling", localStorage.getItem('feeling'))
 
-      // window.location = '4-map.html'
+      window.location = 'map.html'
     });
 
     function getDataUrl(img) {
@@ -127,6 +127,6 @@
     }
   </script>
 
-  <script src="scripts/vendor/interact.min.js"></script>
-  <script src="dragging.js"></script>
+  <script src="/scripts/vendor/interact.min.js"></script>
+  <script src="/scripts/dragging.js"></script>
 </body>
