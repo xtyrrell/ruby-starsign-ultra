@@ -1,0 +1,156 @@
+<head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <main>
+    <form class="my-form" id="my-form">
+      <label>
+        <input type="radio" name="animal" value="croc.jpeg">
+        <img src="assets/animals/compressed_images/croc.jpeg" id="croc.jpeg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="dog.jpg">
+        <img src="assets/animals/compressed_images/dog.jpg" id="dog.jpg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="dog2.jpeg">
+        <img src="assets/animals/compressed_images/dog2.jpeg" id="dog2.jpeg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="fish.jpg">
+        <img src="assets/animals/compressed_images/fish.jpg" id="fish.jpg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="goat.jpg">
+        <img src="assets/animals/compressed_images/goat.jpg" id="goat.jpg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="horse.jpeg">
+        <img src="assets/animals/compressed_images/horse.jpeg" id="horse.jpeg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="pig.png">
+        <img src="assets/animals/compressed_images/pig.png" id="pig.png" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="rabbit.jpg">
+        <img src="assets/animals/compressed_images/rabbit.jpg" id="rabbit.jpg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="rabbit2.jpeg">
+        <img src="assets/animals/compressed_images/rabbit2.jpeg" id="rabbit2.jpeg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="rat.jpeg">
+        <img src="assets/animals/compressed_images/rat.jpeg" id="rat.jpeg" />
+      </label>
+
+      <label>
+        <input type="radio" name="animal" value="swan.jpg">
+        <img src="assets/animals/compressed_images/swan.jpg" id="swan.jpg" />
+      </label>
+
+      <button type="submit">Enter</button>
+    </form>
+
+    <p class="prompt">Choose your familiar</p>
+  </main>
+
+  <style>
+    .my-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      margin-top: 32px;
+    }
+
+    .my-form label {
+      margin-bottom: 32px;
+    }
+
+    .my-form input {
+      border: none;
+      outline: none;
+
+      /* Wonky borders */
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      border-bottom-right-radius: 225px 15px;
+      border-bottom-left-radius:15px 255px;
+
+      border:solid 3px #41403E;
+    }
+
+    input:hover {
+      box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+    }
+  </style>
+
+  <script>
+    const formEl = document.getElementById('my-form');
+    formEl.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      document.querySelector('button')?.classList.add('loading')
+
+      const formData = new FormData(formEl); // Get form data
+
+      const animal = formData.get('animal');
+
+      const animalImgDataUrl = getDataUrl(document.getElementById(animal));
+  
+      localStorage.setItem('animal', JSON.stringify({
+        // text: animal,
+        imageUrl: animalImgDataUrl,
+        label: "animal",
+        datetime: Date.now()
+      }))
+
+      console.log("set animal", localStorage.getItem('animal'))
+
+      // window.location = '4-map.html'
+    });
+
+    function getDataUrl(img) {
+      // Create an empty canvas element
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      console.log("w h", canvas.width, canvas.height)
+
+      // Copy the image contents to the canvas
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      // Get the data-URL formatted image
+      // Firefox supports PNG and JPEG. You could check img.src to
+      // guess the original format, but be aware the using "image/jpg"
+      // will re-encode the image.
+      var dataURL = canvas.toDataURL("image/png");
+
+      return dataURL;
+    }
+  </script>
+
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="dragging.js"></script>
+</body>

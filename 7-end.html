@@ -1,29 +1,54 @@
-end!
+<head>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-<script>
+<div>
+<p class="loading">
+  Printing...
+  <img class="loading-spinner" src="assets/spiral.png" width="50" height="50" />
+</p>
+
+<style>
+  .loading {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<!-- <script>
   document.writeln(localStorage.getItem('login'))
   document.writeln(localStorage.getItem('avatar'))
   document.writeln(localStorage.getItem('feeling'))
-  document.writeln(localStorage.getItem('location'))
+  document.writeln(localStorage.getItem('location')) -->
 </script>
 
 <br>
 
-<pre>
+<pre class="rolling" style="max-width: 100%; overflow: hidden;">
 <script>
-  var img = document.createElement("img");
-  img.src = JSON.parse(localStorage.getItem('avatar')).imageUrl
-  document.body.appendChild(img);
+  // var img = document.createElement("img");
+  // img.src = JSON.parse(localStorage.getItem('avatar')).imageUrl
+  // document.body.appendChild(img);
 
   const items = [
     JSON.parse(localStorage.getItem('login')),
     JSON.parse(localStorage.getItem('avatar')),
     JSON.parse(localStorage.getItem('feeling')),
     JSON.parse(localStorage.getItem('location')),
+    JSON.parse(localStorage.getItem('star-sign')),
+    JSON.parse(localStorage.getItem('animal')),
+    JSON.parse(localStorage.getItem('confession')),
   ]
 
   const itemsStringified = JSON.stringify(items);
 
-  document.writeln(itemsStringified);
+  document.writeln(itemsStringified.slice(0, 2000));
+
+  navigator.clipboard.writeText(itemsStringified);
 </script>
 </pre>
+
+</div>

@@ -48,13 +48,24 @@
       </label>
 
     
-      <button type="submit">Enter</button>
+      <div>
+        <p class="prompt">Choose your location</p>
+        <button type="submit">Enter</button>
+      </div>
     </form>
   </main>
 
   <style>
     .map {
       margin: auto;
+      max-width: 600px;
+    }
+
+    .prompt {
+      position: absolute;
+      right: -300px;
+      bottom: 0;
+      margin: 0;
     }
 
     .my-form {

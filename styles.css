@@ -24,3 +24,49 @@ canvas {
 /* .draggable.drop-activated {
   background: pink;
 } */
+
+.header {
+  text-align: center;
+  margin: 52px;
+  font-size: 24px;
+}
+
+.prompt {
+  text-align: center;
+  margin-top: 122px;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.loading-spinner {
+  animation: spin 2s infinite linear;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rolling {
+  animation: roll 100s infinite linear;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
