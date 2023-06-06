@@ -104,7 +104,7 @@ function drawImagesToCanvas(canvas, images) {
     const aZ = a.style.zIndex || 0;
     const bZ = b.style.zIndex || 0;
 
-    return a - b;
+    return aZ - bZ;
   })
 
   images.forEach(image => {
