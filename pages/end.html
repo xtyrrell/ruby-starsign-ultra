@@ -42,7 +42,7 @@
 
   navigator.clipboard.writeText(itemsStringified);
 
-  download("mydata-" + (new Date()) + ".json", itemsStringified);
+  download("mydata-" + (Date.now()) + ".json", itemsStringified);
 
   function download(filename, text) {
     var element = document.createElement("a");
