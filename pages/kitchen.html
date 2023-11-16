@@ -1,0 +1,154 @@
+<head>
+    <link rel="stylesheet" href="styles.css" />
+  
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body style="flex-direction: column;">
+    <p class="prompt prompt-top" style="margin-bottom: 50px">Drag with your mouse<br />to create your kitchen scenario</p>
+  
+    <main class="avatar-picker-container">
+      <div class="stage-container">
+        <div class="stage dropzone" id="stage" style="border: 0; width: 1100px; align-items: normal;">
+          <img src="/assets/kitchen-compressed/bg.jpg" width="100%" />
+        </div>
+        <button id="stage-button">Confirm your kitchen scene</button>
+        <!-- <p class="prompt">Drag clothes onto the podium<br />to create your avatar</p> -->
+      </div>
+  
+      <img src="/assets/kitchen-compressed/K_1.png" width="60" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_2.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_3.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_4.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_5.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_6.png" width="80" class="draggable outfit-item" />
+  
+      <img src="/assets/kitchen-compressed/K_7.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_8.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_9.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_10.png" width="80" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_11.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_12.png" width="100" class="draggable outfit-item" />
+
+      <img src="/assets/kitchen-compressed/K_13.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_14.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_15.png" width="210" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_16.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_17.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_18.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_19.png" width="60" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_20.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_21.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_22.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_23.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_24.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_25.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_26.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_27.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_28.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_29.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_30.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_31.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_32.png" width="210" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_33.png" width="210" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_34.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_35.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_36.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_37.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_38.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_39.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_40.png" width="180" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_41.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_42.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_43.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_44.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_45.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_46.png" width="200" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_47.png" width="200" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_48.png" width="200" class="draggable outfit-item" />
+      <img src="/assets/kitchen-compressed/K_49.png" width="200" class="draggable outfit-item" />
+
+      
+    </main>
+  
+    <script src="/scripts/vendor/interact.min.js"></script>
+    <script src="/scripts/dragging.js"></script>
+  </body>
+  
+  
+  
+  
+  
+  
+  <script>
+    const stageEl = document.getElementById('stage')
+    const stageButtonEl = document.getElementById('stage-button')
+  
+    // const stageTopGap = stageEl.clientTop;
+    // const stageLeftGap = stageEl.clientLeft;
+  
+    stageButtonEl.addEventListener('click', async event => {
+      console.log('aadding to canvas and screenshotting', window.inDropzone);
+  
+      const imgs = Object.values(window.inDropzone);
+  
+      if (imgs.length == 0) {
+        alert('Oops! Please create an avatar by picking some clothes you like and dragging them onto the dressing area.')
+        return;
+      }
+  
+      // const offscreen = new OffscreenCanvas(300, 600);
+  
+      const tempCanvas = document.createElement("canvas");
+      const resizedContext = tempCanvas.getContext("2d");
+      tempCanvas.width = 300;
+      tempCanvas.height = 600;
+  
+      drawImagesToCanvas(tempCanvas, imgs);
+  
+      // step 2: get the data URL of the Canvas and save it to localStorage and print it out
+      const dataUrl = tempCanvas.toDataURL();
+      localStorage.setItem('avatar', JSON.stringify({
+        imageUrl: dataUrl,
+        label: "avatar",
+        datetime: Date.now()
+      }))
+  
+      window.location = 'feeling.html'
+    })
+  
+    function drawImagesToCanvas(canvas, images) {
+      const ctx = canvas.getContext('2d');
+  
+      const stageEl = document.getElementById('stage')
+  
+      const stageTopGap = window.pageYOffset + stageEl.getBoundingClientRect().top
+      const stageLeftGap = window.pageXOffset + stageEl.getBoundingClientRect().left
+  
+      // TODO: Fix sort
+      const sortedImages = images.sort((a, b) => {
+        const aZ = a.style.zIndex || 0;
+        const bZ = b.style.zIndex || 0;
+  
+        return aZ - bZ;
+      })
+  
+      images.forEach(image => {
+        // step 1: layout the images on canvas  
+        const imgTopGap = window.pageYOffset + image.getBoundingClientRect().top;
+        const imgLeftGap = window.pageXOffset + image.getBoundingClientRect().left;
+  
+        const canvasTop = imgTopGap - stageTopGap;
+        const canvasLeft = imgLeftGap - stageLeftGap;
+  
+        console.log('top, left, width, height')
+        console.log(canvasTop, canvasLeft, image.clientWidth, image.clientHeight)
+  
+        ctx.drawImage(image, canvasLeft, canvasTop, image.clientWidth, image.clientHeight);
+      })
+    }
+  
+  </script>
