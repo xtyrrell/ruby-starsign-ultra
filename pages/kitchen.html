@@ -16,7 +16,6 @@
           <img src="/assets/kitchen-compressed/bg.jpg" width="100%" />
         </div>
         <button id="stage-button">Confirm your kitchen scene</button>
-        <!-- <p class="prompt">Drag clothes onto the podium<br />to create your avatar</p> -->
       </div>
   
       <img src="/assets/kitchen-compressed/K_1.png" width="60" class="draggable outfit-item" />
@@ -96,7 +95,7 @@
       const imgs = Object.values(window.inDropzone);
   
       if (imgs.length == 0) {
-        alert('Oops! Please create an avatar by picking some clothes you like and dragging them onto the dressing area.')
+        alert('Oops! Please set up your kitchen scene by picking some things you like and dragging them onto the kitchen background.')
         return;
       }
   
@@ -111,9 +110,9 @@
   
       // step 2: get the data URL of the Canvas and save it to localStorage and print it out
       const dataUrl = tempCanvas.toDataURL();
-      localStorage.setItem('avatar', JSON.stringify({
+      localStorage.setItem('kitchen', JSON.stringify({
         imageUrl: dataUrl,
-        label: "avatar",
+        label: "kitchen",
         datetime: Date.now()
       }))
   
