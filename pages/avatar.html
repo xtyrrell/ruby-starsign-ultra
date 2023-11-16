@@ -7,14 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body style="flex-direction: column;">
+  <p class="prompt prompt-top">Drag clothes onto the podium<br />to create your avatar</p>
+
   <main class="avatar-picker-container">
     <div class="stage-container">
       <div class="stage dropzone" id="stage">
         <img src="/assets/stage-c.png" width="100%" />
       </div>
       <button id="stage-button">Confirm your outfit</button>
-      <p class="prompt">Drag clothes onto the podium<br />to create your avatar</p>
+      <!-- <p class="prompt">Drag clothes onto the podium<br />to create your avatar</p> -->
     </div>
 
     <img src="/assets/tops/compressed_images/1.png" width="180" class="draggable outfit-item" />
