@@ -38,6 +38,10 @@ canvas {
   font-style: italic;
 }
 
+.prompt-no-margin-top {
+  margin-top: 0;
+}
+
 .loading-spinner {
   animation: spin 2s infinite linear;
 }
@@ -46,8 +50,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100%;
   /* flex-direction: column; */
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 @keyframes spin {
