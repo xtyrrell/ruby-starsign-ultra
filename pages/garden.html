@@ -1,0 +1,126 @@
+<head>
+    <link rel="stylesheet" href="styles.css" />
+  
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body style="flex-direction: column;">
+    <p class="prompt prompt-top" style="margin-bottom: 50px">Drag with your mouse<br />to create your garden scene</p>
+  
+    <main class="avatar-picker-container">
+      <div class="stage-container">
+        <div class="stage dropzone" id="stage" style="border: 0; width: 1100px; align-items: normal;">
+          <img src="/assets/garden-compressed/bg.jpg" width="100%" />
+        </div>
+        <button id="stage-button">Done</button>
+      </div>
+  
+      <img src="/assets/garden-compressed/1.png" width="170" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/2.png" width="200" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/3.png" width="120" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/4.png" width="300" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/5.png" width="130" class="draggable outfit-item" />
+      
+      <img src="/assets/garden-compressed/7.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/8.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/9.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/10.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/11.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/12.png" width="190" class="draggable outfit-item" />
+      
+      <img src="/assets/garden-compressed/6.png" width="90" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/13.png" width="75" class="draggable outfit-item" />
+      
+      <img src="/assets/garden-compressed/14.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/15.png" width="150" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/16.png" width="400" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/17.png" width="180" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/18.png" width="180" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/19.png" width="75" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/20.png" width="140" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/21.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/22.png" width="100" class="draggable outfit-item" />
+      <img src="/assets/garden-compressed/23.png" width="100" class="draggable outfit-item" />      
+    </main>
+  
+    <script src="/scripts/vendor/interact.min.js"></script>
+    <script src="/scripts/dragging.js"></script>
+  </body>
+  
+  
+  
+  
+  
+  
+  <script>
+    const stageEl = document.getElementById('stage')
+    const stageButtonEl = document.getElementById('stage-button')
+  
+    // const stageTopGap = stageEl.clientTop;
+    // const stageLeftGap = stageEl.clientLeft;
+  
+    stageButtonEl.addEventListener('click', async event => {
+      console.log('aadding to canvas and screenshotting', window.inDropzone);
+  
+      const imgs = Object.values(window.inDropzone);
+  
+      if (imgs.length == 0) {
+        alert('Oops! Please set up your garden scene by picking some things you like and dragging them onto the garden background.')
+        return;
+      }
+  
+      // const offscreen = new OffscreenCanvas(300, 600);
+  
+      const tempCanvas = document.createElement("canvas");
+      const resizedContext = tempCanvas.getContext("2d");
+      tempCanvas.width = 300;
+      tempCanvas.height = 600;
+  
+      drawImagesToCanvas(tempCanvas, imgs);
+  
+      // step 2: get the data URL of the Canvas and save it to localStorage and print it out
+      const dataUrl = tempCanvas.toDataURL();
+      localStorage.setItem('garden', JSON.stringify({
+        imageUrl: dataUrl,
+        label: "garden",
+        datetime: Date.now()
+      }))
+  
+      window.location = 'animal.html'
+    })
+  
+    function drawImagesToCanvas(canvas, images) {
+      const ctx = canvas.getContext('2d');
+  
+      const stageEl = document.getElementById('stage')
+  
+      const stageTopGap = window.pageYOffset + stageEl.getBoundingClientRect().top
+      const stageLeftGap = window.pageXOffset + stageEl.getBoundingClientRect().left
+  
+      // TODO: Fix sort
+      const sortedImages = images.sort((a, b) => {
+        const aZ = a.style.zIndex || 0;
+        const bZ = b.style.zIndex || 0;
+  
+        return aZ - bZ;
+      })
+  
+      images.forEach(image => {
+        // step 1: layout the images on canvas  
+        const imgTopGap = window.pageYOffset + image.getBoundingClientRect().top;
+        const imgLeftGap = window.pageXOffset + image.getBoundingClientRect().left;
+  
+        const canvasTop = imgTopGap - stageTopGap;
+        const canvasLeft = imgLeftGap - stageLeftGap;
+  
+        console.log('top, left, width, height')
+        console.log(canvasTop, canvasLeft, image.clientWidth, image.clientHeight)
+  
+        ctx.drawImage(image, canvasLeft, canvasTop, image.clientWidth, image.clientHeight);
+      })
+    }
+  
+  </script>
