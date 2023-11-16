@@ -50,7 +50,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
+  min-height: 95vh;
   /* flex-direction: column; */
   margin-top: 24px;
   margin-bottom: 24px;
