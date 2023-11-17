@@ -76,13 +76,14 @@
   
       const tempCanvas = document.createElement("canvas");
       const resizedContext = tempCanvas.getContext("2d");
-      tempCanvas.width = 300;
+      tempCanvas.width = 1100;
       tempCanvas.height = 600;
   
       drawImagesToCanvas(tempCanvas, imgs);
   
       // step 2: get the data URL of the Canvas and save it to localStorage and print it out
       const dataUrl = tempCanvas.toDataURL();
+      console.log("garden dataUrl", dataUrl)
       localStorage.setItem('garden', JSON.stringify({
         imageUrl: dataUrl,
         label: "garden",
