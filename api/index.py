@@ -8,17 +8,17 @@ ALLOWED_EXTENSIONS = {"json"}
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/api")
 def home():
     return "Hello, World!"
 
 
-@app.route("/about")
+@app.route("/api/about")
 def about():
     return "About"
 
 
-@app.route("/generate-pdf")
+@app.route("/api/generate-pdf")
 def generate_pdf():
     return "generate pdf"
 
@@ -27,7 +27,7 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/uploads", methods=["GET", "POST"])
+@app.route("/api/uploads", methods=["GET", "POST"])
 def upload_file():
     if request.method == "POST":
         # check if the post request has the file part
@@ -41,7 +41,7 @@ def upload_file():
             flash("No selected file")
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
+            filename = secure_filename(file.filename or "example")
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
             return redirect(url_for("download_file", name=filename))
     return """
